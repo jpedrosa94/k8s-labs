@@ -95,7 +95,7 @@ jobs:
         run: |
           sed -i \
             -e 's/^  tag: .*/  tag: '"${{ env.IMAGE_TAG }}"'/' \
-            -e '/name: HOSTNAME/{n;s/value:.*/      value: '"${{ env.IMAGE_TAG }}"'/}' \
+            -e '/name: HOSTNAME/{n;s/value:.*/value: '"${{ env.IMAGE_TAG }}"'/}' \
             "${{ env.FILE_PATH }}"
           cat charts/webapp/values-stg.yaml
 
