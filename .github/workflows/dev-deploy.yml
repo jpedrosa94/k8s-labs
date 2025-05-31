@@ -84,6 +84,9 @@ jobs:
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          commit_author: "${{ steps.import-gpg.outputs.name }} <${{ steps.import-gpg.outputs.email }}>"
+          commit_user_name: ${{ steps.import-gpg.outputs.name }}
+          commit_user_email: ${{ steps.import-gpg.outputs.email }}
           commit_message: "Update image tag to ${{ env.IMAGE_TAG }}"
           branch: main
           file_pattern: ${{ env.FILE_PATH }}
