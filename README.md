@@ -113,16 +113,17 @@ make hotfix
 - Manage ArgoCD secrets using a secret manager/vault
 - Setup Ingress for ArgoCD
 - Create IaC CI/CD pipeline
-- Create application registry on ECR
-- Set dynamically the hard-coded registries and  
+- Create application registry
+- Set dynamically the hard-coded registries and variables
 - Move App of Apps setup to another repository.
 - Create script to handle ***semver*** releases
 - Create a S3 bucket and DynamoDB table to manage statefile and state lockfile
 - Notify Deployment in a communication channel
 - Implement pre-commit
-- Sign container image with Cosign and control with Kyverno
-- Create security polices to manage the cluster
-- Cluster and App monitoring
+- Sign container image with Cosign
+- Create security polices to manage the cluster (Kyverno, Cilium)
+- Cluster and App monitoring (Prometheus, Grafana, Loki)
 - Setup Autoscaler tool (Karpenter or Autoscaler)
+- Runtime Security system (Kubearmor, Falco, Tetragon)
 
 
