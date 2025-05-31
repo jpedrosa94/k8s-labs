@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   # Overrides the image tag whose default is the chart appVersion.
-  tag: dev-6
+  tag: dev-8
   env:
     - name: HOSTNAME
-            value: dev-6
+                  value: dev-8
