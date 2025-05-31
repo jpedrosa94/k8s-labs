@@ -19,8 +19,7 @@ ingress:
     traefik.ingress.kubernetes.io/router.entrypoints: web
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: *
-      paths:
+    - paths:
         - path: /
           pathType: Prefix
           backend:
