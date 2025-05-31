@@ -29,7 +29,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/", handler)
 
-	port := "3002"
+	port := "3001"
 	log.Printf("Starting server on port %s...\n", port)
 	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
