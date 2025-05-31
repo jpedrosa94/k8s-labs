@@ -66,9 +66,11 @@ jobs:
 
       - name: Update image tag in YAML file
         run: |
-          sed -i 's/^  tag: .*/  tag: '"${{ env.IMAGE_TAG }}"'/' ${{ env.FILE_PATH }}
-          sed -i 's/\(name: HOSTNAME\s*value:\).*/\1 '"${{ env.IMAGE_TAG }}"'/' ${{ env.FILE_PATH }}
-          cat charts/webapph/values-dev.yaml
+          sed -i \
+            -e 's/^  tag: .*/  tag: '"${{ env.IMAGE_TAG }}"'/' \
+            -e '/name: HOSTNAME/{n;s/value:.*/      value: '"${{ env.IMAGE_TAG }}"'/}' \
+            "${{ env.FILE_PATH }}"
+          cat charts/webapp/values-dev.yaml
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v4
