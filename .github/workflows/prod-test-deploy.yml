@@ -119,6 +119,8 @@ jobs:
           commit_message: "Update image tag to ${{ env.IMAGE_TAG }}"
           branch: main
           file_pattern: ${{ env.FILE_PATH }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
   create-release:
     needs: [ prod-deploy ]
