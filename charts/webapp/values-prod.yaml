@@ -8,10 +8,26 @@ image:
   repository: juliopedrosa/webapp
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 2.1-f20c
+  tag: 1.0-44f3
   env:
     - name: HOSTNAME
-      value: 2.1-f20c
+      value: 1.0-44f3
+
+ingress:
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: webapp
+              port:
+                number: 80
+
 autoscaling:
   enabled: true
   minReplicas: 1
