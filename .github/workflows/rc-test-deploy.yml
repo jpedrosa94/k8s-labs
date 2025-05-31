@@ -20,7 +20,7 @@ jobs:
           go-version: '1.22'
 
       - name: Run Unit Tests
-        run: go test main_test.go
+        run: go test -v
 
   rc-deploy:
     needs: [ rc-test ]
