@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: charts/argocd-apps
-    repoURL: https://github.com/jpedrosa94/techops-challenge.git
+    repoURL: https://github.com/jpedrosa94/k8s-labs.git
     targetRevision: {{ .Values.ref }}
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -25,7 +25,7 @@ spec:
   project: default
   source:
     path: charts/cluster-bootstrap
-    repoURL: https://github.com/jpedrosa94/techops-challenge.git
+    repoURL: https://github.com/jpedrosa94/k8s-labs.git
     targetRevision: {{ .Values.ref }}
     plugin:
       parameters:
@@ -47,7 +47,7 @@ spec:
 #   project: default
 #   source:
 #     path: charts/ingress
-#     repoURL: https://github.com/jpedrosa94/techops-challenge.git
+#     repoURL: https://github.com/jpedrosa94/k8s-labs.git
 #     targetRevision: {{ .Values.ref }}
 #   syncPolicy:
 #     automated:

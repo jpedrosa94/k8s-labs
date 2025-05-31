@@ -34,6 +34,6 @@ applicationSet:
 configs:
   repositories:
     github:
-      url: https://github.com/jpedrosa94/techops-challenge.git
-      name: techops-challenge
+      url: https://github.com/jpedrosa94/k8s-labs.git
+      name: k8s-labs
       type: git

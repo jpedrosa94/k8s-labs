@@ -17,7 +17,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/jpedrosa94/techops-challenge.git
+        repoURL: https://github.com/jpedrosa94/k8s-labs.git
         targetRevision: HEAD
         path: charts/webapp
         helm:
