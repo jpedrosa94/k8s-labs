@@ -9,6 +9,8 @@ jobs:
   rc-test:
     if: contains(toJSON(github.head_ref), 'release/') || contains(toJSON(github.head_ref), 'hotfix/')
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -91,7 +93,10 @@ jobs:
 
       - name: Update image tag in YAML file
         run: |
-          sed -i 's/^  tag: .*/  tag: '"${{ env.IMAGE_TAG }}"'/' ${{ env.FILE_PATH }}
+          sed -i \
+            -e 's/^  tag: .*/  tag: '"${{ env.IMAGE_TAG }}"'/' \
+            -e '/name: HOSTNAME/{n;s/value:.*/      value: '"${{ env.IMAGE_TAG }}"'/}' \
+            "${{ env.FILE_PATH }}"
           cat charts/webapp/values-stg.yaml
 
       - name: "Import GPG key"

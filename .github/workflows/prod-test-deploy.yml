@@ -23,6 +23,8 @@ jobs:
   prod-deploy:
     needs: [ prod-test ]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     environment: prod
     outputs:
       RELEASE_VERSION: ${{ steps.variables.outputs.RELEASE_VERSION }}
@@ -98,7 +100,10 @@ jobs:
 
       - name: Update image tag in YAML file
         run: |
-          sed -i 's/^  tag: .*/  tag: '"${{ env.IMAGE_TAG }}"'/' ${{ env.FILE_PATH }}
+          sed -i \
+            -e 's/^  tag: .*/  tag: '"${{ env.IMAGE_TAG }}"'/' \
+            -e '/name: HOSTNAME/{n;s/value:.*/      value: '"${{ env.IMAGE_TAG }}"'/}' \
+            "${{ env.FILE_PATH }}"
           cat charts/webapp/values-prod.yaml
           
       - name: "Import GPG key"

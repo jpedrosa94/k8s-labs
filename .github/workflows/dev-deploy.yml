@@ -12,6 +12,8 @@ concurrency:
 jobs:
   dev-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     environment: dev
 
     if: github.event.pull_request.merged == true
@@ -90,5 +92,5 @@ jobs:
           commit_message: "Update image tag to ${{ env.IMAGE_TAG }}"
           branch: main
           file_pattern: ${{ env.FILE_PATH }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GH_PAT }}
