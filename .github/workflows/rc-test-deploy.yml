@@ -9,8 +9,6 @@ jobs:
   rc-test:
     if: contains(toJSON(github.head_ref), 'release/') || contains(toJSON(github.head_ref), 'hotfix/')
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,6 +23,8 @@ jobs:
   rc-deploy:
     needs: [ rc-test ]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     environment: test
     steps:
       # 1. Setup
