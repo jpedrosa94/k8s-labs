@@ -9,4 +9,4 @@ image:
   tag: dev-8
   env:
     - name: HOSTNAME
-                  value: dev-8
+      value: dev-8
