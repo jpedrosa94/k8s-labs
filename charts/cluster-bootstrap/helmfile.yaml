@@ -1,0 +1,26 @@
+repositories:
+  - name: traefik
+    url: https://traefik.github.io/charts
+  - name: metrics-server
+    url: https://kubernetes-sigs.github.io/metrics-server/
+
+helmDefaults:
+  createNamespace: true
+
+releases:
+  - name: traefik
+    chart: traefik/traefik
+    version: "v35.4.0"
+    namespace: traefik
+    createNamespace: true
+    values:
+      - service:
+          type: LoadBalancer
+      - ingressClass:
+          enabled: true
+          isDefaultClass: true
+  - name: metrics-server
+    chart: metrics-server/metrics-server
+    version: "3.11.0"
+    namespace: monitoring
+    createNamespace: true

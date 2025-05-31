@@ -1,0 +1,54 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-apps
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/argocd-apps
+    repoURL: https://github.com/jpedrosa94/techops-challenge.git
+    targetRevision: {{ .Values.ref }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-boostrap
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/cluster-bootstrap
+    repoURL: https://github.com/jpedrosa94/techops-challenge.git
+    targetRevision: {{ .Values.ref }}
+    plugin:
+      parameters:
+        - name: HELMFILE_USE_CONTEXT_NAMESPACE
+          string: 'true'
+  syncPolicy:
+    automated:
+      prune: true
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: ingresses
+#   namespace: argocd
+# spec:
+#   destination:
+#     namespace: argocd
+#     server: https://kubernetes.default.svc
+#   project: default
+#   source:
+#     path: charts/ingress
+#     repoURL: https://github.com/jpedrosa94/techops-challenge.git
+#     targetRevision: {{ .Values.ref }}
+#   syncPolicy:
+#     automated:
+#       prune: true
