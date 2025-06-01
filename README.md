@@ -20,7 +20,8 @@ It's managed through ArgoCD for GitOps, and provisioned using Terraform.
 
 To deploy this project, ensure you have the following installed:
 
-- Access to a Kubernetes cluster
+- AWS Credentials
+- AWS CLI
 - Terraform
 - Make
 - Docker
@@ -38,6 +39,11 @@ To deploy this project, ensure you have the following installed:
    terraform init
    terraform apply
    ```
+   It will output a command to add the cluster to you local context for troubleshooting
+   ```sh
+   aws eks --region us-east-1 update-kubeconfig --name ex-terraform --alias ex-terraform
+   ```
+
 
 ## Development
 
@@ -69,6 +75,7 @@ go run main.go
 ##### Release Flow
 
 1. Go to `develop` branch and create a `feature/*` branch regarding your change
+e.g.:
 ```bash
 git checkout -b feature/update-code
 ```
@@ -111,8 +118,10 @@ make hotfix
 3. After that, merge and a new release will be created and deployed in prod
 ## Tech Debts
 - Manage ArgoCD secrets using a secret manager/vault
+- ArgoCD authentication via SSO
 - Setup Ingress for ArgoCD
 - Create IaC CI/CD pipeline
+- IaC secrity checks (tfsec, checkov, OPA, etc)
 - Create application registry
 - Set dynamically the hard-coded registries and variables
 - Move App of Apps setup to another repository.
@@ -121,6 +130,7 @@ make hotfix
 - Notify Deployment in a communication channel
 - Implement pre-commit
 - Sign container image with Cosign
+- Distroless image
 - Create security polices to manage the cluster (Kyverno, Cilium)
 - Cluster and App monitoring (Prometheus, Grafana, Loki)
 - Setup Autoscaler tool (Karpenter or Autoscaler)
