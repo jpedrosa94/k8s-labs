@@ -1,7 +1,7 @@
 
 # Full Kubernetes Setup
 
-This repository contains the infrastructure and application code for deploying a API using Kubernetes.
+This repository contains the infrastructure and application code for deploying a Webapp using Kubernetes.
 It's managed through ArgoCD for GitOps, and provisioned using Terraform.
 
 ## Structure
