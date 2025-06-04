@@ -23,7 +23,7 @@ func resolveContainerName(getenv func(string) string) string {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	containerName := getContainerName()
-	fmt.Fprintf(w, "Container Name: %s\n", containerName)
+	fmt.Fprintf(w, "Container TAG: %s\n", containerName)
 }
 
 func main() {
