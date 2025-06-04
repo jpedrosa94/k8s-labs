@@ -8,10 +8,10 @@ image:
   repository: juliopedrosa/webapp
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 1.0-44f3
+  tag: 2.0-4e83
   env:
     - name: HOSTNAME
-      value: 1.0-44f3
+      value: 2.0-4e83
 
 ingress:
   enabled: true
